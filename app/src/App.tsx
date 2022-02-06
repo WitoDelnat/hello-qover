@@ -7,8 +7,8 @@ import { NotFoundPage } from "./pages/NotFound";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<IndexPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<IndexPage />} />
       <Route path="/404" element={<NotFoundPage />} />
     </Routes>
   );

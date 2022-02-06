@@ -1,8 +1,15 @@
 import { Center, Box, Heading, Link as ChakraLink } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../auth/useAuth";
 
 export function NotFoundPage() {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate replace to="/login" />;
+  }
+
   return (
     <Box as="main" mx="auto" maxW="5xl">
       <Center

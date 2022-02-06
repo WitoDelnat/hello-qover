@@ -1,4 +1,13 @@
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../auth/useAuth";
+
 export function IndexPage() {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate replace to="/login" />;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
