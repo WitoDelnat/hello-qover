@@ -9,13 +9,7 @@ export const QoverLogo = createIcon({
   displayName: "QoverLogo",
   viewBox: "0 0 85 100",
   path: [
-    <g
-      id="Page-1"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-    >
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
         id="Sign-in"
         transform="translate(-558.000000, -90.000000)"
