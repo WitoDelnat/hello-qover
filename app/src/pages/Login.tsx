@@ -93,7 +93,7 @@ export function LoginPage() {
               <Input
                 {...register("password")}
                 variant="flushed"
-                // type="password"
+                type="password"
                 borderBottomColor="#317bda"
                 borderBottomWidth="2px"
                 height="28px"
