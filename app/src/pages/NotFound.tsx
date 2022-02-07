@@ -22,8 +22,8 @@ export function NotFoundPage() {
         borderRadius="md"
       >
         <Heading size="md">Page not found.</Heading>
-        <ChakraLink as={Link} to="/">
-          Click here to return to the homepage.
+        <ChakraLink as={Link} to="/insurance/quote">
+          Click here to go to quick quote for car insurances.
         </ChakraLink>
       </Center>
     </Box>

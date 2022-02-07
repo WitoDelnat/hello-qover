@@ -39,7 +39,7 @@ export function LoginPage() {
         setLoading(true);
         setError(false);
         await login(username, password);
-        navigate("/insurance/car/quote");
+        navigate("/insurance/quote");
       } catch {
         setError(true);
       } finally {

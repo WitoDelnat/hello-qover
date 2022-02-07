@@ -45,6 +45,11 @@ export function CarQuotePage() {
     async (values: FormValues) => {
       try {
         const plans = await calculateQuote.mutateAsync(values);
+        navigate("/insurance/plans", {
+          state: {
+            plans,
+          },
+        });
       } catch (err) {
         switch (err instanceof Error ? err.message : "unexpected_error") {
           case "driver_too_young":
