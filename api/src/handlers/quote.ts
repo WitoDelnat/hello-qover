@@ -1,5 +1,6 @@
 import { Static, Type } from "@sinclair/typebox";
 import { FastifyInstance } from "fastify";
+import { isAuthenticated } from "../modules/auth";
 import { createCarQuoteCalculator } from "../modules/insurance";
 
 type QuoteBody = Static<typeof QuoteBody>;
@@ -28,6 +29,11 @@ export async function quote(fastify: FastifyInstance) {
     "/quote",
     { schema: { body: QuoteBody } },
     async (request, reply) => {
+      const headers = request.headers;
+      if (!isAuthenticated(headers)) {
+        return reply.unauthorized();
+      }
+
       try {
         const calculator = createCarQuoteCalculator(request.body);
         const offer = calculator.compute();

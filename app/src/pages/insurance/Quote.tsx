@@ -199,12 +199,15 @@ export const Plans = z.object({
 });
 
 function useCalculateQuote() {
+  const { accessToken } = useAuth();
+
   return useMutation(async (values: FormValues) => {
     const request = await fetch("http://localhost:8080/api/quote", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 

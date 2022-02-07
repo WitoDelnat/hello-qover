@@ -2,6 +2,8 @@ import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { config } from "../../config";
 import { addSeconds, getUnixTime } from "date-fns";
+import { isArray } from "lodash";
+import { logger } from "../../utils/logger";
 
 export function createSalt(): string {
   return crypto.randomBytes(16).toString("hex");
@@ -21,4 +23,26 @@ export function createAccessToken(userId: string): string {
   };
 
   return jwt.sign(claims, config.auth.jwtSecret);
+}
+
+export function isAuthenticated(headers: Record<string, string | string[] | undefined>): boolean {
+  const header = headers["authorization"];
+
+  // Case note: No support for multiple Authorization headers to avoid header injection attacks
+  if (!header || isArray(header)) {
+    return false;
+  }
+
+  const [type, token] = header.split(" ");
+
+  if (type !== "Bearer") {
+    return false;
+  }
+
+  try {
+    jwt.verify(token, config.auth.jwtSecret);
+    return true;
+  } catch (err) {
+    return false;
+  }
 }
