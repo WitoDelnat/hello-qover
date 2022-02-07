@@ -50,6 +50,7 @@ export function LoginPage() {
   );
 
   return (
+    // Case note: Normally I'd split this up in a layout or more modular components but my time box is running out.
     <Box
       display="flex"
       flexDir="column"
