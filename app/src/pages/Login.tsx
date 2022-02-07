@@ -39,7 +39,7 @@ export function LoginPage() {
         setLoading(true);
         setError(false);
         await login(username, password);
-        navigate("/");
+        navigate("/insurance/quote");
       } catch {
         setError(true);
       } finally {
@@ -93,7 +93,7 @@ export function LoginPage() {
               <Input
                 {...register("password")}
                 variant="flushed"
-                // type="password"
+                type="password"
                 borderBottomColor="#317bda"
                 borderBottomWidth="2px"
                 height="28px"

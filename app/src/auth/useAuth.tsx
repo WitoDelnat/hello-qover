@@ -21,26 +21,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState<string | null>(null);
 
-  const login = useCallback(async (username, password) => {
-    const response = await fetch("http://localhost:8080/api/login", {
-      method: "POST",
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  const login = useCallback(
+    async (username, password) => {
+      const response = await fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error("authentication_failed");
-    }
+      if (!response.ok) {
+        throw new Error("authentication_failed");
+      }
 
-    const result = await response.json();
+      const result = await response.json();
 
-    setAccessToken(result["access_token"]);
-  }, []);
+      setAccessToken(result["access_token"]);
+    },
+    [setAccessToken]
+  );
 
   const logout = useCallback(() => {
     setAccessToken(null);
@@ -54,7 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       login,
       logout,
     };
-  }, []);
+  }, [accessToken, login, logout]);
 
   return <AuthContext.Provider value={ctx}>{children}</AuthContext.Provider>;
 }
