@@ -94,13 +94,13 @@ export function CarPlansPage() {
 
         <Text
           pt="30"
-          color="#31cfda"
+          color="teal.100"
           cursor="pointer"
           textDecoration="underline"
           fontWeight="bold"
         >
           Show me the full comparison table
-          <ComparisonIcon ml="2.5" color="#31cfda" />
+          <ComparisonIcon ml="2.5" color="teal.100" />
         </Text>
       </Box>
     </Box>
@@ -120,8 +120,8 @@ function PlanBox({
   onClick: () => void;
   features: PlanFeaturesProps["features"];
 }) {
-  const bgColor = selected ? "#31cfda" : "white";
-  const fontColor = selected ? "white" : "#484848";
+  const bgColor = selected ? "teal.100" : "white";
+  const fontColor = selected ? "white" : "gray.900";
 
   return (
     <Box
@@ -159,7 +159,7 @@ function PlanPrice({
   selected?: boolean;
 }) {
   const bgColor = selected ? "rgba(255, 255, 255, 0.15)" : "#f5fdfe";
-  const fontColor = selected ? "white" : "#31cfda";
+  const fontColor = selected ? "white" : "teal.100";
 
   return (
     <Box
@@ -234,8 +234,8 @@ function PlanAction({
   selected?: boolean;
   onClick: () => void;
 }) {
-  const bgColor = selected ? "white" : "#31cfda";
-  const fontColor = selected ? "#31cfda" : "white";
+  const bgColor = selected ? "white" : "teal.100";
+  const fontColor = selected ? "teal.100" : "white";
   const actionLabel = selected ? "Plan selected" : "Choose this plan";
 
   return (
