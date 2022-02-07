@@ -15,7 +15,9 @@ import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
+import { Navigate } from "react-router-dom";
 import { z } from "zod";
+import { useAuth } from "../../auth/useAuth";
 import codeOverlayUrl from "../../code-overlay.png";
 
 type FormValues = z.infer<typeof FormValues>;
@@ -26,6 +28,7 @@ const FormValues = z.object({
 });
 
 export function CarQuotePage() {
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -71,8 +74,12 @@ export function CarQuotePage() {
         }
       }
     },
-    [calculateQuote, setError]
+    [calculateQuote, setError, navigate]
   );
+
+  if (!isAuthenticated) {
+    return <Navigate replace to="/login" />;
+  }
 
   return (
     <Box

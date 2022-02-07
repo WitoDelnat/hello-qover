@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../auth/useAuth";
 import backgroundTravelUrl from "../../background-travel.png";
 import { ComparisonIcon } from "../../components/icons/ComparisonIcon";
 import { Plans } from "./Quote";
@@ -20,11 +21,16 @@ type State = {
 };
 
 export function CarPlansPage() {
+  const { isAuthenticated } = useAuth();
   const location = useLocation();
   const plans = (location.state as State).plans;
 
   const [selected, setSelected] = useState<"universal" | "global">("global");
   const [isYearly, setIsYearly] = useState<boolean>(false);
+
+  if (!isAuthenticated) {
+    <Navigate to="/login" />;
+  }
 
   if (!plans) {
     <Navigate to="insurance/quote" />;
