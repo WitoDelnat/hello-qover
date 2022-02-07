@@ -19,6 +19,7 @@
     "fastify-sensible": "3.1.2",
     "js-yaml": "4.1.0",
     "jsonwebtoken": "8.5.1",
+    "lodash": "^4.17.21",
     "mongoose": "6.2.0",
     "node-graceful": "3.1.0",
     "pino": "7.6.5",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@types/config": "0.0.41",
     "@types/jsonwebtoken": "^8.5.8",
+    "@types/lodash": "^4.14.178",
     "@types/mongoose": "5.11.97",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
