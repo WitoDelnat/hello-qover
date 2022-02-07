@@ -103,7 +103,7 @@ export function CarQuotePage() {
             <VStack w="495px" mx="auto" py="60px" alignItems="start">
               <FormControl>
                 <HStack>
-                  <FormLabel w="150px" fontSize="15px" color="#5b7289">
+                  <FormLabel w="150px" fontSize="15px" color="gray.800">
                     Age of the driver
                   </FormLabel>
                   <Input
@@ -111,7 +111,7 @@ export function CarQuotePage() {
                     type="number"
                     height="40px"
                     width="80px"
-                    errorBorderColor="#ee3d57"
+                    errorBorderColor="red.100"
                   />
                 </HStack>
               </FormControl>
@@ -122,15 +122,15 @@ export function CarQuotePage() {
                     flexShrink="0"
                     w="150px"
                     fontSize="15px"
-                    color="#5b7289"
+                    color="gray.800"
                   >
                     Car
                   </FormLabel>
 
                   <Select
                     {...register("carBrand")}
-                    iconColor="#31cfda"
-                    errorBorderColor="#ee3d57"
+                    iconColor="teal.100"
+                    errorBorderColor="red.100"
                   >
                     <option value="audi">Audi</option>
                     <option value="bmw">BMW</option>
@@ -141,7 +141,7 @@ export function CarQuotePage() {
 
               <FormControl>
                 <HStack>
-                  <FormLabel w="150px" fontSize="15px" color="#5b7289">
+                  <FormLabel w="150px" fontSize="15px" color="gray.800">
                     Purchase price
                   </FormLabel>
 
@@ -150,7 +150,7 @@ export function CarQuotePage() {
                     type="number"
                     height="40px"
                     width="80px"
-                    errorBorderColor="#ee3d57"
+                    errorBorderColor="red.100"
                   />
                   <Text>€</Text>
                 </HStack>
@@ -159,7 +159,7 @@ export function CarQuotePage() {
               {errorMessage ? (
                 <HStack>
                   <Box w="160px" />
-                  <Text color="#ee3d57">{errorMessage}</Text>
+                  <Text color="red.100">{errorMessage}</Text>
                 </HStack>
               ) : null}
 
@@ -171,7 +171,7 @@ export function CarQuotePage() {
                   width="100%"
                   height="45px"
                   colorScheme="blue"
-                  bgColor="#31cfda"
+                  bgColor="teal.100"
                 >
                   Get a price
                 </Button>

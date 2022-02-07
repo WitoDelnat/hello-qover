@@ -50,11 +50,13 @@ export function LoginPage() {
   );
 
   return (
+    // Case note: Normally I'd split this up in a layout or more modular components but my time box is running out.
     <Box
       display="flex"
       flexDir="column"
       w="100%"
       h="100%"
+      // Case note: theme colors do not work here and bgGradient deviates too much
       backgroundImage="linear-gradient(122deg, #317bda -6%, #33c3c8)"
     >
       <VStack spacing="5" flex="1 0 auto">
@@ -70,31 +72,31 @@ export function LoginPage() {
             w="350px"
             bgColor="white"
           >
-            <Heading mt="30px" mx="auto" color="#5b7289" fontSize="18px">
+            <Heading mt="30px" mx="auto" color="gray.800" fontSize="18px">
               Welcome at Qover
             </Heading>
 
             <FormControl>
-              <FormLabel fontSize="10px" color="#5b7289">
+              <FormLabel fontSize="10px" color="gray.800">
                 Username
               </FormLabel>
               <Input
                 {...register("username")}
                 variant="flushed"
-                borderBottomColor="#317bda"
+                borderBottomColor="blue.100"
                 borderBottomWidth="2px"
                 height="28px"
               />
             </FormControl>
             <FormControl>
-              <FormLabel fontSize="10px" color="#5b7289">
+              <FormLabel fontSize="10px" color="gray.800">
                 Password
               </FormLabel>
               <Input
                 {...register("password")}
                 variant="flushed"
                 type="password"
-                borderBottomColor="#317bda"
+                borderBottomColor="blue.100"
                 borderBottomWidth="2px"
                 height="28px"
               />
@@ -111,7 +113,7 @@ export function LoginPage() {
               width="100%"
               height="45px"
               colorScheme="blue"
-              bgColor="#317bda"
+              bgColor="blue.100"
               isLoading={loading}
             >
               Sign in to your account
