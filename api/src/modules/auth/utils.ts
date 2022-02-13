@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import { config } from "../../config";
 import { addSeconds, getUnixTime } from "date-fns";
 import { isArray } from "lodash";
-import { logger } from "../../utils/logger";
 
 export function createSalt(): string {
   return crypto.randomBytes(16).toString("hex");
