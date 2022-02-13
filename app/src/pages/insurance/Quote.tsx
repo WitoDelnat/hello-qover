@@ -19,6 +19,7 @@ import { Navigate } from "react-router-dom";
 import { z } from "zod";
 import { useAuth } from "../../auth/useAuth";
 import codeOverlayUrl from "../../code-overlay.png";
+import { LogoutButton } from "../../components/LogoutButton";
 
 type FormValues = z.infer<typeof FormValues>;
 const FormValues = z.object({
@@ -90,6 +91,15 @@ export function CarQuotePage() {
       backgroundImage={`url(${codeOverlayUrl}), linear-gradient(122deg, #317bda -6%, #33c3c8)`}
       backgroundSize="cover"
     >
+      <Box
+        position="absolute"
+        width="100%"
+        display="flex"
+        flexDir="row-reverse"
+        p="3"
+      >
+        <LogoutButton />
+      </Box>
       <Center h="100%">
         <Box
           rounded="3px"

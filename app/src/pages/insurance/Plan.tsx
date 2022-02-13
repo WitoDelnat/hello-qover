@@ -14,6 +14,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../auth/useAuth";
 import backgroundTravelUrl from "../../background-travel.png";
 import { ComparisonIcon } from "../../components/icons/ComparisonIcon";
+import { LogoutButton } from "../../components/LogoutButton";
 import { Plans } from "./Quote";
 
 type State = {
@@ -47,6 +48,16 @@ export function CarPlansPage() {
       bgColor="#f6f6f6"
       backgroundSize="100% auto"
     >
+      <Box
+        position="absolute"
+        width="100%"
+        display="flex"
+        flexDir="row-reverse"
+        p="3"
+      >
+        <LogoutButton />
+      </Box>
+
       <Box display="flex" flexDir="column" w="100%" alignItems="center">
         <Heading pt="10" color="white">
           Select a plan
