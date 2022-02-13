@@ -1,4 +1,5 @@
 import { round } from "lodash";
+import { errors } from "./errors";
 
 // Case note: Bit overkill for these business rules
 // Normally I'd simply keep this within one function until it gets complex,
@@ -20,7 +21,7 @@ export function createCarQuoteCalculator({
     case "porche":
       return new PorcheQuoteCalculator(driverAge, carValue);
     default:
-      throw new Error("car_brand_unsupported");
+      throw new errors.CarBrandUnsupported();
   }
 }
 
@@ -46,8 +47,8 @@ export abstract class CarQuoteCalculator {
   }
 
   protected validate(): void {
-    if (this.carValue < 5000) throw new Error("car_value_too_low");
-    if (this.driverAge < 18) throw new Error("driver_too_young");
+    if (this.carValue < 5000) throw new errors.CarValueTooLow();
+    if (this.driverAge < 18) throw new errors.DriverTooYoungError();
   }
 
   protected abstract computeYearlyGlobalOffer(): number;
@@ -77,7 +78,7 @@ export class BmwQuoteCalculator extends CarQuoteCalculator {
 export class PorcheQuoteCalculator extends CarQuoteCalculator {
   protected validate(): void {
     super.validate();
-    if (this.driverAge < 25) throw new Error("unacceptable_risk");
+    if (this.driverAge < 25) throw new errors.UnacceptableRiskError();
   }
 
   computeYearlyGlobalOffer(): number {
