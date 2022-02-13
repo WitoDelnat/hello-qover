@@ -1,15 +1,5 @@
-import { CheckCircleIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  chakra,
-  Divider,
-  Heading,
-  HStack,
-  Switch,
-  Text,
-} from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Box, Heading, HStack, Switch, Text } from "@chakra-ui/react";
+import React, { ReactNode, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../auth/useAuth";
 import backgroundTravelUrl from "../../background-travel.png";
@@ -39,26 +29,7 @@ export function CarPlansPage() {
   }
 
   return (
-    <Box
-      display="flex"
-      flexDir="column"
-      w="100%"
-      h="100vh"
-      backgroundImage={`url(${backgroundTravelUrl})`}
-      backgroundRepeat="no-repeat"
-      bgColor="#f6f6f6"
-      backgroundSize="100% auto"
-    >
-      <Box
-        position="absolute"
-        width="100%"
-        display="flex"
-        flexDir="row-reverse"
-        p="3"
-      >
-        <LogoutButton />
-      </Box>
-
+    <Layout>
       <Box display="flex" flexDir="column" w="100%" alignItems="center">
         <Heading pt="10" color="white">
           Select a plan
@@ -104,17 +75,49 @@ export function CarPlansPage() {
           />
         </HStack>
 
-        <Text
-          pt="30"
-          color="teal.100"
-          cursor="pointer"
-          textDecoration="underline"
-          fontWeight="bold"
-        >
-          Show me the full comparison table
-          <ComparisonIcon ml="2.5" color="teal.100" />
-        </Text>
+        <ComparisonLink />
       </Box>
+    </Layout>
+  );
+}
+
+function Layout({ children }: { children: ReactNode }) {
+  return (
+    <Box
+      display="flex"
+      flexDir="column"
+      w="100%"
+      h="100vh"
+      backgroundImage={`url(${backgroundTravelUrl})`}
+      backgroundRepeat="no-repeat"
+      bgColor="#f6f6f6"
+      backgroundSize="100% auto"
+    >
+      <Box
+        position="absolute"
+        width="100%"
+        display="flex"
+        flexDir="row-reverse"
+        p="3"
+      >
+        <LogoutButton />
+      </Box>
+      {children}
     </Box>
+  );
+}
+
+function ComparisonLink() {
+  return (
+    <Text
+      pt="30"
+      color="teal.100"
+      cursor="pointer"
+      textDecoration="underline"
+      fontWeight="bold"
+    >
+      Show me the full comparison table
+      <ComparisonIcon ml="2.5" color="teal.100" />
+    </Text>
   );
 }
