@@ -11,7 +11,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useCallback } from "react";
+import React, { ReactNode, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
@@ -83,23 +83,7 @@ export function CarQuotePage() {
   }
 
   return (
-    <Box
-      display="flex"
-      flexDir="column"
-      w="100%"
-      h="100%"
-      backgroundImage={`url(${codeOverlayUrl}), linear-gradient(122deg, #317bda -6%, #33c3c8)`}
-      backgroundSize="cover"
-    >
-      <Box
-        position="absolute"
-        width="100%"
-        display="flex"
-        flexDir="row-reverse"
-        p="3"
-      >
-        <LogoutButton />
-      </Box>
+    <Layout>
       <Center h="100%">
         <Box
           rounded="3px"
@@ -190,6 +174,31 @@ export function CarQuotePage() {
           </form>
         </Box>
       </Center>
+    </Layout>
+  );
+}
+
+function Layout({ children }: { children: ReactNode }) {
+  return (
+    <Box
+      display="flex"
+      flexDir="column"
+      w="100%"
+      h="100%"
+      backgroundImage={`url(${codeOverlayUrl}), linear-gradient(122deg, #317bda -6%, #33c3c8)`}
+      backgroundSize="cover"
+    >
+      <Box
+        position="absolute"
+        width="100%"
+        display="flex"
+        flexDir="row-reverse"
+        p="3"
+      >
+        <LogoutButton />
+      </Box>
+
+      {children}
     </Box>
   );
 }
