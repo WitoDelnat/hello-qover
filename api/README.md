@@ -14,3 +14,9 @@ docker run --rm --detach \
   -p 27017:27017 \
   mongo:5.0
 ```
+
+Afterwards, simply start the server after installing dependencies:
+
+```
+yarn dev
+```
