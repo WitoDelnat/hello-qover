@@ -231,7 +231,8 @@ function useCalculateQuote() {
     });
 
     if (!request.ok) {
-      throw new Error("");
+      const body = await request.json();
+      throw new Error(body.message);
     }
 
     const body = await request.json();
