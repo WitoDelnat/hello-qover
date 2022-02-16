@@ -24,7 +24,7 @@ import { LogoutButton } from "../../components/LogoutButton";
 type FormValues = z.infer<typeof FormValues>;
 const FormValues = z.object({
   driverAge: z.number(),
-  carBrand: z.enum(["audi", "bmw", "porchse"]),
+  carBrand: z.enum(["audi", "bmw", "porche"]),
   carValue: z.number(),
 });
 
